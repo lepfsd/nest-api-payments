@@ -7,12 +7,14 @@ import { PaymentSchema } from './schema/payment.schema';
 
 @Module({
   imports: [
-    MongooseModule.forFeatureAsync([{
-      name: PAYMENT.name,
-      useFactory: () => {
-        return PaymentSchema;
-      }
-    }]),
+    MongooseModule.forFeatureAsync([
+      {
+        name: PAYMENT.name,
+        useFactory: () => {
+          return PaymentSchema;
+        },
+      },
+    ]),
   ],
   controllers: [PaymentController],
   providers: [PaymentService],
