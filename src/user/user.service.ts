@@ -40,4 +40,12 @@ export class UserService {
     await this.model.deleteOne({ _id: id });
     return { status: HttpStatus.OK, msg: 'Deleted' };
   }
+
+  async findByUsername(username: string): Promise<IUser> {
+    return await this.model.findOne({ username });
+  }
+
+  async checkPassword(password: string, passwordDB: string): Promise<boolean> {
+    return await bcrypt.compare(password, passwordDB);
+  }
 }
